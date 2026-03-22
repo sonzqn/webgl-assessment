@@ -1,7 +1,9 @@
+/** Scene setup: engine, scene, camera, and lights. */
+
 import {
   Engine,
   Scene,
-  FreeCamera,
+  ArcRotateCamera,
   HemisphericLight,
   DirectionalLight,
   Vector3,
@@ -9,6 +11,21 @@ import {
 } from '@babylonjs/core';
 import { CAMERA_MAIN, ENGINE, LIGHTS } from '../const';
 import { setupEnvironmentLighting } from './environment';
+
+export type CreateCameraOptions = {
+  name?: string;
+  radius?: number;
+  fov?: number;
+  minZ?: number;
+  maxZ?: number;
+  wheelPrecision?: number;
+  pinchPrecision?: number;
+  lowerRadiusLimit?: number;
+  upperRadiusLimit?: number;
+  panningSensibility?: number;
+  /** Default true */
+  attachControl?: boolean;
+};
 
 export function createEngine(canvas: HTMLCanvasElement): Engine {
   return new Engine(canvas, true, {
@@ -21,11 +38,46 @@ export function createScene(engine: Engine): Scene {
   return new Scene(engine);
 }
 
-export function createRudimentaryCamera(scene: Scene, canvas: HTMLCanvasElement): FreeCamera {
-  const camera = new FreeCamera(CAMERA_MAIN.DEFAULT_NAME, new Vector3(5, 4, -9), scene);
-  camera.setTarget(Vector3.Zero());
-  camera.minZ = CAMERA_MAIN.MIN_Z;
-  camera.attachControl(canvas, true);
+export function createCamera(
+  scene: Scene,
+  canvas: HTMLCanvasElement,
+  options?: CreateCameraOptions,
+): ArcRotateCamera {
+  const camera = new ArcRotateCamera(
+    options?.name ?? CAMERA_MAIN.DEFAULT_NAME,
+    CAMERA_MAIN.ALPHA,
+    CAMERA_MAIN.BETA,
+    options?.radius ?? CAMERA_MAIN.DEFAULT_RADIUS,
+    Vector3.Zero(),
+    scene,
+  );
+
+  if (options?.fov !== undefined) {
+    camera.fov = options.fov;
+  }
+  if (options?.maxZ !== undefined) {
+    camera.maxZ = options.maxZ;
+  }
+
+  camera.wheelPrecision = options?.wheelPrecision ?? CAMERA_MAIN.WHEEL_PRECISION;
+  camera.minZ = options?.minZ ?? CAMERA_MAIN.MIN_Z;
+  if (options?.pinchPrecision !== undefined) {
+    camera.pinchPrecision = options.pinchPrecision;
+  }
+  camera.lowerRadiusLimit = options?.lowerRadiusLimit ?? CAMERA_MAIN.LOWER_RADIUS_LIMIT;
+  camera.upperRadiusLimit = options?.upperRadiusLimit ?? CAMERA_MAIN.UPPER_RADIUS_LIMIT;
+
+  if (options?.panningSensibility !== undefined) {
+    camera.panningSensibility = options.panningSensibility;
+  } else {
+    camera.panningOriginTarget = Vector3.Zero();
+    camera.panningDistanceLimit = CAMERA_MAIN.PANNING_DISTANCE_LIMIT;
+  }
+
+  if (options?.attachControl !== false) {
+    camera.attachControl(canvas, true);
+  }
+
   scene.activeCamera = camera;
   return camera;
 }
@@ -70,14 +122,14 @@ export function createLights(scene: Scene, parent?: Node): void {
 export type SceneContext = {
   engine: Engine;
   scene: Scene;
-  camera: FreeCamera;
+  camera: ArcRotateCamera;
 };
 
 export function setupScene(canvas: HTMLCanvasElement): SceneContext {
   const engine = createEngine(canvas);
   const scene = createScene(engine);
   setupEnvironmentLighting(scene);
-  const camera = createRudimentaryCamera(scene, canvas);
+  const camera = createCamera(scene, canvas);
   createLights(scene);
   return { engine, scene, camera };
 }
