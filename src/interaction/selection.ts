@@ -6,13 +6,19 @@ import {
   Mesh,
   Scene,
   SelectionOutlineLayer,
+  Vector3,
   type Node,
+  type Nullable,
 } from '@babylonjs/core';
 import { SELECTION } from '../const';
+import type { PartInfo } from '../data/parts';
+import { getPartByRootNameOrFallback } from '../data/parts';
 import { resolveComponentRoot } from '../model/componentRoot';
+import { showPartModal } from '../ui/modal';
 
 let clearSelectionRef: (() => void) | null = null;
 
+/** Clear the current selection highlight. */
 export function clearSelection(): void {
   clearSelectionRef?.();
 }
@@ -56,6 +62,7 @@ function applyOutlineIntensity(outlineLayer: SelectionOutlineLayer, meshes: Abst
   for (const m of meshes) outlineLayer.setEffectIntensity(m, 1);
 }
 
+/** Highlight glow blurs over time. */
 function subscribeHighlightPulse(
   scene: Scene,
   highlightLayer: HighlightLayer,
@@ -82,7 +89,9 @@ type PendingSelection = {
   startX: number;
   startY: number;
   wasDragged: boolean;
-  target: import('@babylonjs/core').Nullable<AbstractMesh>;
+  target: Nullable<AbstractMesh>;
+  partForModal: PartInfo;
+  pickedPoint: Nullable<Vector3>;
 };
 
 function attachSelectionHoverCursor(
@@ -112,6 +121,7 @@ type SelectionPointerDeps = {
   outlineLayer: SelectionOutlineLayer;
   selectedMeshes: AbstractMesh[];
   updateHoverCursor: (evt: unknown) => void;
+  onPartPicked?: (part: PartInfo | null, meshName: string) => void;
 };
 
 function attachSelectionPointerHandlers(scene: Scene, deps: SelectionPointerDeps): void {
@@ -127,6 +137,10 @@ function attachSelectionPointerHandlers(scene: Scene, deps: SelectionPointerDeps
     const pe = evt as PointerEvent;
     if (typeof pe?.button === 'number' && pe.button !== 0) return;
 
+    const root = resolveComponentRoot(target);
+    const partForModal = getPartByRootNameOrFallback(root.name);
+
+    const pickedPoint = pickInfo?.pickedPoint ? pickInfo.pickedPoint.clone() : null;
     const { x, y } = getClientXY(evt);
 
     pendingSelection = {
@@ -134,6 +148,8 @@ function attachSelectionPointerHandlers(scene: Scene, deps: SelectionPointerDeps
       startY: y,
       wasDragged: false,
       target,
+      partForModal,
+      pickedPoint,
     };
   };
 
@@ -160,6 +176,8 @@ function attachSelectionPointerHandlers(scene: Scene, deps: SelectionPointerDeps
     }
 
     const target = pendingSelection.target;
+    const partForModal = pendingSelection.partForModal;
+    const pickedPoint = pendingSelection.pickedPoint;
     pendingSelection = null;
 
     const root = resolveComponentRoot(target);
@@ -175,11 +193,17 @@ function attachSelectionPointerHandlers(scene: Scene, deps: SelectionPointerDeps
       setHighlightSelection(deps.highlightLayer, deps.selectedMeshes);
     }
 
+    showPartModal(partForModal, root, target, pickedPoint);
+
+    deps.onPartPicked?.(partForModal, target.name);
     deps.updateHoverCursor(evt);
   };
 }
 
-export function setupSelection(scene: Scene): void {
+export function setupSelection(
+  scene: Scene,
+  onPartPicked?: (part: PartInfo | null, meshName: string) => void,
+): void {
   const highlightLayer = createConfiguredHighlightLayer(scene);
   const outlineLayer = createConfiguredSelectionOutlineLayer(scene);
 
@@ -201,5 +225,6 @@ export function setupSelection(scene: Scene): void {
     outlineLayer,
     selectedMeshes,
     updateHoverCursor,
+    onPartPicked,
   });
 }

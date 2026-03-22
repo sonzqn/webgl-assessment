@@ -9,6 +9,16 @@
     <div id="fps" class="fps-overlay" aria-live="polite"></div>
     <canvas id="renderCanvas"></canvas>
     <div id="loading">Loading model…</div>
+    <div id="modal-panel" class="web-ui-modal" aria-hidden="true">
+      <div id="modal-preview-slot"></div>
+      <div class="modal-label">Part Name</div>
+      <h2 id="modal-part-name"></h2>
+      <div class="modal-label">Description</div>
+      <p id="modal-description"></p>
+      <div class="modal-label">Attributes</div>
+      <dl id="modal-attributes"></dl>
+      <button type="button" id="modal-close">Close</button>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

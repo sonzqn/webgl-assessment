@@ -1,7 +1,14 @@
 :root {
+  --modal-bg: #1c1c1f;
+  --modal-surface: #252528;
+  --modal-border: rgba(255, 255, 255, 0.1);
   --modal-text: #f4f4f5;
   --modal-text-muted: #b4b4bc;
-  --modal-border: rgba(255, 255, 255, 0.1);
+  --modal-label: #94a3b8;
+  --modal-accent: #3b82f6;
+  --modal-radius: 14px;
+  --modal-radius-sm: 10px;
+  --modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 * {
   margin: 0;
@@ -38,6 +45,104 @@ body {
   height: 100%;
   touch-action: none;
   display: block;
+}
+#modal-panel {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 380px;
+  background: var(--modal-bg);
+  border: 1px solid var(--modal-border);
+  border-radius: var(--modal-radius);
+  padding: 24px;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  box-shadow: var(--modal-shadow);
+}
+#modal-panel.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#modal-preview-slot {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 320px;
+  margin: 0 0 20px;
+  background: var(--modal-surface);
+  border-radius: var(--modal-radius-sm);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--modal-border);
+}
+#modal-preview-slot canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.modal-label {
+  color: var(--modal-label);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+#modal-part-name {
+  color: var(--modal-text);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+#modal-description {
+  color: var(--modal-text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+#modal-attributes {
+  color: var(--modal-text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+#modal-attributes dt {
+  font-weight: 600;
+  color: var(--modal-text);
+  margin-top: 10px;
+}
+#modal-attributes dt:first-child {
+  margin-top: 0;
+}
+#modal-attributes dd {
+  margin-left: 0;
+}
+#modal-close {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 16px;
+  cursor: pointer;
+  background: var(--modal-surface);
+  border: 1px solid var(--modal-border);
+  color: var(--modal-text);
+  border-radius: var(--modal-radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+#modal-close:hover {
+  background: #323237;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+#modal-close:focus-visible {
+  outline: 2px solid var(--modal-accent);
+  outline-offset: 2px;
 }
 #loading {
   position: fixed;

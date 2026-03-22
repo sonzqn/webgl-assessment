@@ -4,6 +4,7 @@ export const APP = {
   CANVAS_ID: 'renderCanvas',
   LOADING_ID: 'loading',
   FPS_ID: 'fps',
+  PARTS_JSON_URL: '/parts.json',
   HIDDEN_CLASS: 'hidden',
   LOAD_ERROR_MESSAGE: 'Failed to load. See console.',
 } as const;
@@ -75,6 +76,68 @@ export const SELECTION = {
   /** MSAA samples on the outline render target (1 = off; 4 ≈ antialiased like the sample). */
   OUTLINE_MAIN_TEXTURE_SAMPLES: 1,
   OUTLINE_THICKNESS: 1,
+} as const;
+
+export const MODAL = {
+  PANEL_ID: 'modal-panel',
+  PART_NAME_ID: 'modal-part-name',
+  DESCRIPTION_ID: 'modal-description',
+  ATTRIBUTES_ID: 'modal-attributes',
+  PREVIEW_SLOT_ID: 'modal-preview-slot',
+  CLOSE_BUTTON_ID: 'modal-close',
+} as const;
+
+export const MODAL_PREVIEW = {
+  AUTO_ROTATE_SPEED: 0.3,
+  MESHES_DEEP: false,
+  CANVAS_ID: 'modal-part-preview-canvas',
+  CANVAS_STYLE: {
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    borderRadius: '6px',
+    boxSizing: 'border-box',
+  } as const,
+  FLOATING_CANVAS_STYLE: {
+    position: 'fixed',
+    pointerEvents: 'auto',
+    zIndex: '4',
+    display: 'none',
+  } as const,
+  ENGINE_ANTIALIAS: true,
+  ENGINE_OPTIONS: {
+    preserveDrawingBuffer: true,
+    stencil: false,
+    antialias: true,
+  } as const,
+  HARDWARE_SCALING_LEVEL: 1,
+  CAMERA_OPTIONS: {
+    name: 'modalPreviewCam',
+    radius: 2.5,
+    fov: 0.88,
+    minZ: 0.001,
+    maxZ: 100000,
+    wheelPrecision: 80,
+    pinchPrecision: 80,
+    lowerRadiusLimit: 0.2,
+    upperRadiusLimit: 20,
+    panningSensibility: 0,
+  } as const,
+  RESIZE_MIN_DIMENSION: 2,
+  LAYOUT_SLOT_MIN: 2,
+  LAYOUT_HOST_MAX_FRACTION: 0.95,
+  LAYOUT_MIN_SIDE_PX: 8,
+  CENTER_EPSILON_SQ: 1e-10,
+  TAN_HALF_FOV_FLOOR: 1e-4,
+  FRAMING_MARGIN: 1.38,
+  MIN_ORBIT_RADIUS: 0.55,
+  ZOOM_LOWER_RADIUS_FACTOR: 0.45,
+  ZOOM_UPPER_RADIUS_FACTOR: 2.75,
+  NODE_SPIN: 'modalPreviewSpin',
+  NODE_CONTENT: 'modalPreviewContent',
+  CLONE_NAME_SUFFIX: '_clone',
+  DEFAULT_FRAME_DT: 1 / 60,
+  PREVIEW_MAX_FPS_WHEN_IDLE: 30,
 } as const;
 
 export const RED_MATERIAL = {

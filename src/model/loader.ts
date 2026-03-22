@@ -49,3 +49,14 @@ export async function loadModel(scene: Scene): Promise<AbstractMesh[]> {
   applyRedComponentPickability(meshes);
   return meshes;
 }
+
+export async function loadPreviewTemplateMeshes(scene: Scene): Promise<AbstractMesh[]> {
+  const data = await preloadModelBinary();
+  const meshes = await importModelMeshesFromBuffer(scene, data);
+  centerMeshesAtBoundingBoxOrigin(meshes);
+  for (const m of meshes) {
+    m.isPickable = false;
+    m.setEnabled(false);
+  }
+  return meshes;
+}

@@ -1,0 +1,265 @@
+{
+  "parts": [
+    {
+      "id": "Bracket_Brake",
+      "name": "Bracket Brake",
+      "description": "Mounting bracket that secures the brake caliper to the suspension assembly.",
+      "attributes": {
+        "Material": "Steel",
+        "Weight": "0.3kg"
+      }
+    },
+    {
+      "id": "pads_Brake",
+      "name": "pads Brake",
+      "description": "Ceramic brake pads for improved stopping power and reduced brake dust.",
+      "attributes": {
+        "Material": "Ceramic composite",
+        "Weight": "0.4kg"
+      }
+    },
+    {
+      "id": "Bushing_B1",
+      "name": "Bushing B1",
+      "description": "Isolation bushing to reduce vibration and NVH between interconnected components.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_B2",
+      "name": "Bushing B2",
+      "description": "Isolation bushing to reduce vibration and NVH between interconnected components.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_B3",
+      "name": "Bushing B3",
+      "description": "Isolation bushing to reduce vibration and NVH between interconnected components.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_B4",
+      "name": "Bushing B4",
+      "description": "Isolation bushing to reduce vibration and NVH between interconnected components.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_Bracket_A1",
+      "name": "Bushing Bracket A1",
+      "description": "Bracket-mounted bushing for controlled pivot and vibration isolation.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.25kg"
+      }
+    },
+    {
+      "id": "Bushing_Bracket_A2",
+      "name": "Bushing Bracket A2",
+      "description": "Bracket-mounted bushing for controlled pivot and vibration isolation.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.25kg"
+      }
+    },
+    {
+      "id": "Bushing_A5",
+      "name": "Bushing A5",
+      "description": "Control arm bushing for articulation and road noise isolation.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_A6",
+      "name": "Bushing A6",
+      "description": "Control arm bushing for articulation and road noise isolation.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_A7",
+      "name": "Bushing A7",
+      "description": "Control arm bushing for articulation and road noise isolation.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bushing_A8",
+      "name": "Bushing A8",
+      "description": "Control arm bushing for articulation and road noise isolation.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "RadiusArmBushing",
+      "name": "Radius Arm Bushing",
+      "description": "Connects the radius arm to the axle housing; controls articulation and absorbs shocks.",
+      "attributes": {
+        "Material": "Polyurethane",
+        "Weight": "0.35kg"
+      }
+    },
+    {
+      "id": "SpringPad",
+      "name": "Spring Pad",
+      "description": "Rubber pad between coil spring and strut assembly to absorb vibration and distribute load.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.08kg"
+      }
+    },
+    {
+      "id": "Strut_BumpStop",
+      "name": "Strut Bump Stop",
+      "description": "Limits suspension travel and absorbs impact on full compression to protect components.",
+      "attributes": {
+        "Material": "Polyurethane",
+        "Weight": "0.1kg"
+      }
+    },
+    {
+      "id": "Strut_Mount",
+      "name": "Strut Mount",
+      "description": "Top mount connecting the strut to the vehicle body; allows rotation and dampens transfer.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.25kg"
+      }
+    },
+    {
+      "id": "SwayBar_Front",
+      "name": "Sway Bar Front",
+      "description": "Front anti-roll bar that reduces body roll and improves cornering stability.",
+      "attributes": {
+        "Material": "Steel",
+        "Weight": "2.4kg"
+      }
+    },
+    {
+      "id": "Back_Diff_Bushing",
+      "name": "Back Diff Bushing",
+      "description": "Dampens differential movement and reduces gear whine transfer to the chassis.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.5kg"
+      }
+    },
+    {
+      "id": "BumpStop_Right",
+      "name": "Bump Stop Right",
+      "description": "Secondary bump stop to protect suspension components from over-compression.",
+      "attributes": {
+        "Material": "Polyurethane",
+        "Weight": "0.1kg"
+      }
+    },
+    {
+      "id": "Bush_Polyurethane_A1",
+      "name": "Bush Polyurethane A1",
+      "description": "Polyurethane bush for improved handling response and longevity.",
+      "attributes": {
+        "Material": "Polyurethane",
+        "Weight": "0.15kg"
+      }
+    },
+    {
+      "id": "Bush_Polyurethane_A2",
+      "name": "Bush Polyurethane A2",
+      "description": "Polyurethane bush for improved handling response and longevity.",
+      "attributes": {
+        "Material": "Polyurethane",
+        "Weight": "0.15kg"
+      }
+    },
+    {
+      "id": "Bush_SpringLower_Right",
+      "name": "Bush Spring Lower Right",
+      "description": "Lower spring seat bushing for isolation and proper coil alignment.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Bush_SpringUpper_Right",
+      "name": "Bush Spring Upper Right",
+      "description": "Upper spring seat bushing for isolation and proper coil alignment.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "DIffMount_BushingLarge",
+      "name": "DIff Mount Bushing Large",
+      "description": "Main differential mount bushing for drivetrain isolation and positioning.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.5kg"
+      }
+    },
+    {
+      "id": "Bushing",
+      "name": "Bushing",
+      "description": "General-purpose isolation bushing for vibration dampening.",
+      "attributes": {
+        "Material": "Rubber",
+        "Weight": "0.12kg"
+      }
+    },
+    {
+      "id": "Shock_Absorbers_Right",
+      "name": "Shock Absorbers Right",
+      "description": "Dampens suspension oscillation and controls rebound for ride comfort.",
+      "attributes": {
+        "Material": "Steel",
+        "Weight": "1.8kg"
+      }
+    },
+    {
+      "id": "SwayMount_Polyurethane",
+      "name": "Sway Mount Polyurethane",
+      "description": "Stiffer sway bar mount for improved anti-roll response and feel.",
+      "attributes": {
+        "Material": "Polyurethane",
+        "Weight": "0.35kg"
+      }
+    },
+    {
+      "id": "TrailingArmLower_Right",
+      "name": "Trailing Arm Lower Right",
+      "description": "Connects the rear axle to the chassis; controls vertical and lateral movement.",
+      "attributes": {
+        "Material": "Aluminium",
+        "Weight": "0.9kg"
+      }
+    },
+    {
+      "id": "SwayBar_Rear",
+      "name": "Sway Bar Rear",
+      "description": "Rear anti-roll bar for balanced handling and reduced body roll.",
+      "attributes": {
+        "Material": "Steel",
+        "Weight": "2.2kg"
+      }
+    }
+  ]
+}
