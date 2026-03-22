@@ -2,7 +2,11 @@
 
 This project is a browser-based viewer for a vehicle rolling-chassis assembly. It loads a GLB model with **Babylon.js**, lets users pick individual components, and shows part metadata in a side panel with a focused 3D preview.
 
-![Application screenshot](docs/image.png)
+## Live demo
+
+**[Open the app on GitHub Pages](https://sonzqn.github.io/webgl-assessment/)**
+
+[![Application screenshot](docs/image.png)](https://sonzqn.github.io/webgl-assessment/)
 
 ## Which model is used
 
