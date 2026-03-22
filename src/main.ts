@@ -1,20 +1,19 @@
 import './styles.css';
-import { MeshBuilder, StandardMaterial, Color3 } from '@babylonjs/core';
 import { APP } from './const';
+import { loadModel } from './model/loader';
 import { setupScene } from './scene/setup';
+import { initFpsDisplay } from './ui/fps';
 
 const canvas = document.getElementById(APP.CANVAS_ID) as HTMLCanvasElement;
 const loadingEl = document.getElementById(APP.LOADING_ID);
 if (!canvas) throw new Error(`Canvas #${APP.CANVAS_ID} not found`);
 
-function main(): void {
+async function main(): Promise<void> {
   const { engine, scene } = setupScene(canvas);
+  const fpsEl = document.getElementById(APP.FPS_ID);
+  if (fpsEl) initFpsDisplay(engine, scene, fpsEl);
 
-  const box = MeshBuilder.CreateBox('placeholder', { size: 1.2 }, scene);
-  const mat = new StandardMaterial('placeholderMat', scene);
-  mat.diffuseColor = new Color3(0.35, 0.55, 0.95);
-  mat.specularColor = new Color3(0.2, 0.2, 0.25);
-  box.material = mat;
+  await loadModel(scene);
 
   if (loadingEl) loadingEl.classList.add(APP.HIDDEN_CLASS);
 
@@ -22,4 +21,10 @@ function main(): void {
   window.addEventListener('resize', () => engine.resize());
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  if (loadingEl) {
+    loadingEl.textContent = APP.LOAD_ERROR_MESSAGE;
+    loadingEl.classList.remove(APP.HIDDEN_CLASS);
+  }
+});

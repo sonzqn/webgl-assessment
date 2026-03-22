@@ -21,7 +21,8 @@
     "vite": "^8.0.1"
   },
   "dependencies": {
-    "@babylonjs/core": "^8.56.1"
+    "@babylonjs/core": "^8.56.1",
+    "@babylonjs/loaders": "^8.56.1"
   },
   "engines": {
     "node": ">=20"
