@@ -1,5 +1,6 @@
 import './styles.css';
 import { APP } from './const';
+import { setupSelection } from './interaction/selection';
 import { loadModel } from './model/loader';
 import { setupScene } from './scene/setup';
 import { initFpsDisplay } from './ui/fps';
@@ -16,6 +17,8 @@ async function main(): Promise<void> {
   await loadModel(scene);
 
   if (loadingEl) loadingEl.classList.add(APP.HIDDEN_CLASS);
+
+  setupSelection(scene);
 
   engine.runRenderLoop(() => scene.render());
   window.addEventListener('resize', () => engine.resize());

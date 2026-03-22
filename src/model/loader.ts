@@ -4,6 +4,8 @@ import '@babylonjs/loaders/glTF';
 import { ImportMeshAsync, Scene, type AbstractMesh } from '@babylonjs/core';
 import { MODEL } from '../const';
 import { getMeshesWorldBounds } from '../utils/meshBounds';
+import { applyRedComponentPickability } from './redComponents';
+
 let modelBinaryPromise: Promise<ArrayBuffer> | null = null;
 
 export function preloadModelBinary(): Promise<ArrayBuffer> {
@@ -44,5 +46,6 @@ export async function loadModel(scene: Scene): Promise<AbstractMesh[]> {
   const data = await preloadModelBinary();
   const meshes = await importModelMeshesFromBuffer(scene, data);
   centerMeshesAtBoundingBoxOrigin(meshes);
+  applyRedComponentPickability(meshes);
   return meshes;
 }

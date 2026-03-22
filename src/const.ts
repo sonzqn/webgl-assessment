@@ -61,3 +61,33 @@ export const MODEL = {
   BASE_URL: '/',
   FILE: 'Falcon FG FGX Chassis Full.glb',
 } as const;
+
+export const SELECTION = {
+  CLICK_DRAG_THRESHOLD_PX: 6,
+  HIGHLIGHT_COLOR_RGB: new Color3(0.2, 0.6, 1),
+  PULSE_MIN: 0.5,
+  PULSE_MAX: 1,
+  PULSE_HZ: 0.5,
+  HIGHLIGHT_LAYER_NAME: 'selectionHighlight',
+  HIGHLIGHT_BLUR_HORIZONTAL: 0.75,
+  HIGHLIGHT_BLUR_VERTICAL: 0.75,
+  OUTLINE_LAYER_NAME: 'selectionOutline',
+  /** MSAA samples on the outline render target (1 = off; 4 ≈ antialiased like the sample). */
+  OUTLINE_MAIN_TEXTURE_SAMPLES: 1,
+  OUTLINE_THICKNESS: 1,
+} as const;
+
+export const RED_MATERIAL = {
+  /** Below this max RGB channel, surface treated as black / non-red */
+  MAX_CHANNEL_FOR_BLACK: 0.03,
+  /** Normalized g/b must be below this when r dominates */
+  CHANNEL_DOMINANCE_MAX: 0.2,
+} as const;
+
+export const NAMING = {
+  GLTF_PRIMITIVE_SUFFIX: /_primitive\d+$/i,
+  /** Strip trailing `.001`-style suffix (parts lookup). */
+  DUPLICATE_SUFFIX: /\.\d+$/,
+  /** Remove any `.digits` segments in display names (deriveNameFromRoot). */
+  DUPLICATE_SEGMENTS_GLOBAL: /\.\d+/g,
+} as const;
