@@ -1,10 +1,12 @@
 import { Color3, Vector3 } from '@babylonjs/core';
 
+const publicBase = import.meta.env.BASE_URL;
+
 export const APP = {
   CANVAS_ID: 'renderCanvas',
   LOADING_ID: 'loading',
   FPS_ID: 'fps',
-  PARTS_JSON_URL: '/parts.json',
+  PARTS_JSON_URL: `${publicBase}parts.json`,
   HIDDEN_CLASS: 'hidden',
   LOAD_ERROR_MESSAGE: 'Failed to load. See console.',
 } as const;
@@ -30,7 +32,7 @@ export const ENGINE = {
 
 /** Image-based lighting: prefiltered `.env` in `public/`.*/
 export const ENVIRONMENT = {
-  PREFILTERED_ENV_URL: '/environmentSpecular.env',
+  PREFILTERED_ENV_URL: `${publicBase}environmentSpecular.env`,
   /** Scales IBL diffuse + specular; tune against {@link LIGHTS}. */
   INTENSITY: 0.85,
 } as const;
@@ -59,7 +61,7 @@ export const LIGHTS = {
 } as const;
 
 export const MODEL = {
-  BASE_URL: '/',
+  BASE_URL: publicBase,
   FILE: 'Falcon FG FGX Chassis Full.glb',
 } as const;
 
