@@ -1,0 +1,38 @@
+:root {
+  --modal-text: #f4f4f5;
+  --modal-text-muted: #b4b4bc;
+  --modal-border: rgba(255, 255, 255, 0.1);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#renderCanvas {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  display: block;
+}
+#loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--modal-text);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  z-index: 5;
+}
+#loading.hidden {
+  display: none;
+}
